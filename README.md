@@ -7,6 +7,15 @@ https://www.containerweek.com/
 - Introdução ao Kubernetes
 - Como subir um cluster do Kubernetes sem Node
 
+@jpetazzo
+
+https://docs.google.com/presentation/d/1uJsRss15tYR-oed9N5BYqGLYEnj7RFgxgFyu_k3EQqQ/edit?usp=drivesdk
+
+Live Demo
+
+https://github.com/jpetazzo/container.training
+
+
 ## 09/04/19
 
 - Docker
