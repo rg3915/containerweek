@@ -24,6 +24,243 @@ https://github.com/jpetazzo/container.training
 - Deploy com Docker Stack
 
 
+
+
+iptables - comando pra conversar com módulo do kernel
+
+
+Instalando o Docker
+
+```
+curl -fsSL https://get.docker.com | bash
+
+docker version
+
+docker container ls
+
+docker container run hello-world
+```
+
+Interativo
+
+```
+docker container run -ti debian
+```
+
+já entra direto no container
+
+Quando você sai do container com `exit`, ele morre.
+
+```
+docker container ls -a
+```
+
+Pra não matar o container tem que sair com
+
+```
+CTRL + p + q
+```
+
+Pra voltar para o container
+
+```
+docker container attach CONTAINER_ID ou NAMES
+```
+
+Rodando em segundo plano, modo daemon
+
+```
+docker container run -d -p 8080:80 nginx # imagem
+docker image ls
+docker container ls
+```
+
+Conectar sem usar o `attach`
+
+```
+docker container exec -ti CONTAINER_ID bash
+```
+
+```
+cd /usr/share/nginx/html/
+echo "GIROPOPS STRIGUS GIRUS" > index.html
+```
+
+Deletar o container
+
+```
+docker container ls
+docker container rm -f CONTAINER_ID
+```
+
+## Subir cluster com Swarm
+
+Orquestração dos container
+
+
+* Alta disponibilidade
+* Balanceamento de carga
+* Escalável
+
+```
+docker swarm init
+```
+
+Como adicionar outro nó no cluster
+
+```
+docker swarm join --token ID porta:2377
+docker node ls # mostra todos os nós do cluster
+```
+
+manager - é o gerenciador do cluster
+
+ou
+
+worker - somente executa os container
+
+
+Se você tiver vários manager, você pode perder somente 1. Ou seja, você deve manter mais que 51% dos manager dentro do cluster. Mais do que isso você perder o cluster.
+
+
+```
+docker swarm join-token manager
+docker swarm join-token worker
+```
+
+Vai no outro nó e digite
+
+```
+docker swarm join --token TOKEN porta:2377
+```
+
+```
+docker node promote HOSTNAME # vira manager
+docker node demote HOSTNAME # vira worker
+```
+
+```
+docker node inspect HOSTNAME
+```
+
+## Criando um service
+
+Criar e expor o container
+
+```
+docker service create --name nginx -p 8080:80 --replicas 5 nginx
+```
+
+ou `--publish`
+
+```
+docker service ls
+```
+
+Aonde estão rodando os container
+
+```
+docker service ps nginx
+```
+
+Para retornar a página
+
+```
+curl 0:8080
+```
+
+Logs
+
+```
+docker service logs -f nginx
+```
+
+```
+docker service create --name nginx -p 8080:80 --replicas 1 --limit-cpu 0.2 --limit-memory 64M nginx
+```
+
+Ver o consumo
+
+```
+docker container stats ID
+```
+
+Escalando
+
+```
+docker service scale nginx=10
+```
+
+Criando mais um serviço
+
+```
+docker service create --name giropops -p 8080:80 linuxtips/nginx-prometheus-exporter:1.0.0
+curl 0:8080
+docker service scale giropops=10
+docker service ls
+```
+
+Update
+
+```
+docker service update --image linuxtips/nginx-prometheus-exporter:2.0.0 giropops
+curl ip:porta
+```
+
+https://github.com/badtuxx/giropops-monitoring
+
+Docker Compose é para criar vários serviços
+
+## Instalando rexray
+
+```
+curl -sSL https://rexray.io/install | sh -s -- stable
+```
+
+```
+vim /etc/
+systemctl restart rexray
+systemctl status rexray
+```
+
+Compose file, usar o volume
+
+Criando volume
+
+```
+docker volume create --driver rexray grafana_d
+```
+
+```
+docker volume ls
+```
+
+Editando mais alguns arquivos
+
+```
+vim conf/alertmanager/config.yml
+vim conf/promotheus/promotheus.yml
+```
+
+```
+rexray volume mount promotheus_c
+df -h
+```
+
+```
+cp conf/promotheus/* /var/lib/rexray/volumes/promotheus_c/data/
+```
+
+No final tem que desmontar o volume.
+
+```
+docker stack deploy -c docker-compose.yml giropops
+docker stack ls
+docker stack ps
+```
+
+
+
 ## 10/04/19
 
 - Kubernetes
