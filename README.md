@@ -289,6 +289,108 @@ docker stack ps
 - Deploy num cluster do Kubernetes
 - Helm by Kubernetes
 
+curl -fsSL https://get.docker.com | bash
+
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+
+echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/k8s ...
+
+apt-get install kubelet kubeadm kubectl
+
+# desabilitar swap
+
+swapoff -a
+
+docker info
+
+docker info | grep cgroup
+
+vim /etc/docker/daemon.json
+
+conteúdo na doc do kubernetes
+
+https://kubernetes.io/docs/home/
+
+mkdir -p /etc/systemd/system/docker.service.d
+
+systemctl daemon-reload
+
+systemctl restart docker
+
+docker info | grep -i cgroup
+
+kubeadm config images pull
+
+kubeadm init
+
+# Criar as configurações conforme indicado no terminal
+
+kubectl apply -f "url"
+
+kubectl get pods -n kube-system
+
+kubectl get nodes
+
+kubectl describe node nome_da_maquina
+
+echo "source <(kubectl completion bash)" >> ~/.bashrc
+
+kubeadm token create --print-join-command
+
+kubectl get namespaces
+
+kubectl run nginx --image-nginx
+
+kubectl get deployments
+
+kubectl get replicaments
+
+kubectl describe replicasets. name
+
+kubectl describe pods
+
+
+
+### Criar service
+
+kubectl expose deployment nginx
+
+kubectl expose deployments. nginx
+
+kubectl run nginx --port 80 --image=nginx
+
+kubectl PERDI
+
+kubectl expose deployment nginx
+
+kubectl get service
+
+kubectl expose deployment nginx --type=NodePort
+
+curl 0:31717 # porta gerada randomic
+
+kubectl edit service nginx
+
+kubectl expose deployment nginx --type=LoadBalancer
+
+kubectl get service
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## 11/04/19
 
