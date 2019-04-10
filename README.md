@@ -9,6 +9,12 @@ https://www.containerweek.com/
 
 @jpetazzo
 
+YouTube
+
+https://www.youtube.com/watch?v=WkM9R9-WQCk
+
+Slides
+
 https://docs.google.com/presentation/d/1uJsRss15tYR-oed9N5BYqGLYEnj7RFgxgFyu_k3EQqQ/edit?usp=drivesdk
 
 Live Demo
@@ -23,7 +29,13 @@ https://github.com/jpetazzo/container.training
 - Docker Swarm
 - Deploy com Docker Stack
 
+YouTube
 
+https://www.youtube.com/watch?v=T3lpAjOcbU8
+
+CheatSheet sobre Docker da LINUXtips
+
+https://www.linuxtips.io/cheatsheet
 
 
 iptables - comando pra conversar com módulo do kernel
@@ -96,6 +108,8 @@ docker container rm -f CONTAINER_ID
 ## Subir cluster com Swarm
 
 Orquestração dos container
+
+https://docs.docker.com/engine/swarm/
 
 
 * Alta disponibilidade
@@ -212,6 +226,12 @@ https://github.com/badtuxx/giropops-monitoring
 Docker Compose é para criar vários serviços
 
 ## Instalando rexray
+
+https://rexray.io/
+
+Storages suportados pelo RexRay
+
+https://rexray.readthedocs.io/en/v0.10.0/user-guide/storage-providers/
 
 ```
 curl -sSL https://rexray.io/install | sh -s -- stable
