@@ -410,6 +410,10 @@ https://helm.sh/docs/
 - Service Mesh
 - Istio - controlar micro serviços
 
+Palestra de Daniel Requena
+
+https://speakerdeck.com/drequena/canary-release-com-kubernetes-e-istio
+
 
 ## 12/04/19
 
