@@ -289,6 +289,7 @@ docker stack ps
 - Deploy num cluster do Kubernetes
 - Helm by Kubernetes
 
+```
 curl -fsSL https://get.docker.com | bash
 
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
@@ -348,11 +349,12 @@ kubectl get replicaments
 kubectl describe replicasets. name
 
 kubectl describe pods
-
+```
 
 
 ### Criar service
 
+```
 kubectl expose deployment nginx
 
 kubectl expose deployments. nginx
@@ -374,11 +376,22 @@ kubectl edit service nginx
 kubectl expose deployment nginx --type=LoadBalancer
 
 kubectl get service
+```
 
 
+Projeto com k8s usado como exemplo
+
+https://github.com/badtuxx/k8s-canary-deploy-example
 
 
+Instalação do Kubernetes
 
+https://kubernetes.io/docs/tasks/tools/install-kubectl/
+
+
+Doc do Helm
+
+https://helm.sh/docs/
 
 
 
